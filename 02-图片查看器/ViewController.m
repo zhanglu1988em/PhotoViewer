@@ -33,58 +33,86 @@
     return _arryM;
 }
 
+
+//控件的懒加载
+-(UILabel*) titleLbl
+{
+    if (_titleLbl == nil) {
+        _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, 40)];
+        [_titleLbl setTextAlignment:NSTextAlignmentCenter];
+        [self.view addSubview:_titleLbl];
+    }
+    return _titleLbl;
+}
+
+-(UIImageView*) imageView
+{
+    if (_imageView == nil) {
+        CGFloat imageW = 200.0;
+        CGFloat imageH = 200.0;
+        CGFloat x = (self.view.bounds.size.width - imageW) * 0.5 ;
+        CGFloat y = CGRectGetMaxY(self.titleLbl.frame) + Spacing;
+        _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, imageW, imageH)];
+        [self.view addSubview:_imageView];
+        
+    }
+    return _imageView;
+}
+
+-(UILabel*) descLbl
+{
+    if (_descLbl == nil) {
+        
+        CGFloat descY = CGRectGetMaxY(self.imageView.frame);
+        _descLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, descY, self.view.bounds.size.width, 40)];
+        [_descLbl setTextAlignment:NSTextAlignmentCenter];
+        [self.view addSubview:_descLbl];
+    }
+    return _descLbl;
+}
+
+-(UIButton*) leftBtn
+{
+    if (_leftBtn == nil) {
+        _leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        CGFloat centerX = self.imageView.frame.origin.x * 0.5;
+        CGFloat centerY = self.imageView.center.y;
+        _leftBtn.center = CGPointMake(centerX, centerY);
+        [_leftBtn setBackgroundImage:[UIImage imageNamed :@"left_normal"] forState:UIControlStateNormal];
+        [_leftBtn setBackgroundImage:[UIImage imageNamed :@"left_highted"]  forState:UIControlStateHighlighted];
+        [self.leftBtn addTarget:self action:@selector(actionClick:) forControlEvents:UIControlEventTouchUpInside];
+        _leftBtn.tag = -1;
+        [self.view addSubview:_leftBtn];
+    }
+    return _leftBtn;
+}
+
+
+-(UIButton*) rightBtn
+{
+    if (_rightBtn == nil) {
+        _rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+        CGFloat centerX = CGRectGetMaxX(self.imageView.frame) + (self.view.bounds.size.width - CGRectGetMaxX(_imageView.frame)) * 0.5;
+        CGFloat centerY = self.imageView.center.y;
+        self.rightBtn.tag = 1;
+        _rightBtn.center = CGPointMake(centerX, centerY);
+        
+        
+        _rightBtn.center = CGPointMake(centerX, centerY);
+        [_rightBtn setBackgroundImage:[UIImage imageNamed :@"right_normal"] forState:UIControlStateNormal];
+        [_rightBtn setBackgroundImage:[UIImage imageNamed :@"right_highted"]  forState:UIControlStateHighlighted];
+        [self.rightBtn addTarget:self action:@selector(actionClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.view addSubview:_rightBtn];
+    }
+    return _rightBtn;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    _titleLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, 20, self.view.bounds.size.width, 40)];
-    [_titleLbl setText:@"1/5"];
-    [_titleLbl setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:_titleLbl];
-    
-    
-    CGFloat imageW = 200.0;
-    CGFloat imageH = 200.0;
-    CGFloat x = (self.view.bounds.size.width - imageW) * 0.5 ;
-    CGFloat y = CGRectGetMaxY(_titleLbl.frame) + Spacing;
-    
-    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(x, y, imageW, imageH)];
-    [self.view addSubview:_imageView];
-    
-    
-    CGFloat descY = CGRectGetMaxY(_imageView.frame);
-    _descLbl = [[UILabel alloc] initWithFrame:CGRectMake(0, descY, self.view.bounds.size.width, 40)];
-    [_descLbl setTextAlignment:NSTextAlignmentCenter];
-    [self.view addSubview:_descLbl];
-    
-    _leftBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    CGFloat centerX = self.imageView.frame.origin.x * 0.5;
-    CGFloat centerY = self.imageView.center.y;
-    _leftBtn.center = CGPointMake(centerX, centerY);
-    [_leftBtn setBackgroundImage:[UIImage imageNamed :@"left_normal"] forState:UIControlStateNormal];
-    [_leftBtn setBackgroundImage:[UIImage imageNamed :@"left_highted"]  forState:UIControlStateHighlighted];
-    [self.leftBtn addTarget:self action:@selector(actionClick:) forControlEvents:UIControlEventTouchUpInside];
-    self.leftBtn.tag = -1;
-    [self.view addSubview:_leftBtn];
-    
-    
-    _rightBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    centerX = CGRectGetMaxX(_imageView.frame) + (self.view.bounds.size.width - CGRectGetMaxX(_imageView.frame)) * 0.5;
-    centerY = self.imageView.center.y;
-    self.rightBtn.tag = 1;
-    _rightBtn.center = CGPointMake(centerX, centerY);
-
-    
-    _rightBtn.center = CGPointMake(centerX, centerY);
-    [_rightBtn setBackgroundImage:[UIImage imageNamed :@"right_normal"] forState:UIControlStateNormal];
-    [_rightBtn setBackgroundImage:[UIImage imageNamed :@"right_highted"]  forState:UIControlStateHighlighted];
-    [self.rightBtn addTarget:self action:@selector(actionClick:) forControlEvents:UIControlEventTouchUpInside];
-
-    [self.view addSubview:_rightBtn];
-    [self actioAdvance ];
-    NSLog(@"%@",self.arryM);
+    [self showPhoto];
     
   }
-
 // 优化之前
 -(void) actioRetreat
 {
