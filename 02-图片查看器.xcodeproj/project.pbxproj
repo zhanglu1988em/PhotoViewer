@@ -13,6 +13,8 @@
 		A65BC65A1C37549D00D18034 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65BC6581C37549D00D18034 /* Main.storyboard */; };
 		A65BC65C1C37549D00D18034 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A65BC65B1C37549D00D18034 /* Assets.xcassets */; };
 		A65BC65F1C37549D00D18034 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A65BC65D1C37549D00D18034 /* LaunchScreen.storyboard */; };
+		A65BC6671C3767CB00D18034 /* resource.plist in Resources */ = {isa = PBXBuildFile; fileRef = A65BC6661C3767CB00D18034 /* resource.plist */; };
+		A65BC66A1C37693800D18034 /* ResourceMode.m in Sources */ = {isa = PBXBuildFile; fileRef = A65BC6691C37693800D18034 /* ResourceMode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,9 @@
 		A65BC65B1C37549D00D18034 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A65BC65E1C37549D00D18034 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A65BC6601C37549D00D18034 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A65BC6661C3767CB00D18034 /* resource.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = resource.plist; sourceTree = "<group>"; };
+		A65BC6681C37693800D18034 /* ResourceMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceMode.h; sourceTree = "<group>"; };
+		A65BC6691C37693800D18034 /* ResourceMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceMode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,10 +67,8 @@
 				A65BC6531C37549D00D18034 /* AppDelegate.m */,
 				A65BC6551C37549D00D18034 /* ViewController.h */,
 				A65BC6561C37549D00D18034 /* ViewController.m */,
-				A65BC6581C37549D00D18034 /* Main.storyboard */,
-				A65BC65B1C37549D00D18034 /* Assets.xcassets */,
-				A65BC65D1C37549D00D18034 /* LaunchScreen.storyboard */,
-				A65BC6601C37549D00D18034 /* Info.plist */,
+				A65BC6681C37693800D18034 /* ResourceMode.h */,
+				A65BC6691C37693800D18034 /* ResourceMode.m */,
 				A65BC64F1C37549D00D18034 /* Supporting Files */,
 			);
 			path = "02-图片查看器";
@@ -74,6 +77,11 @@
 		A65BC64F1C37549D00D18034 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A65BC6661C3767CB00D18034 /* resource.plist */,
+				A65BC65B1C37549D00D18034 /* Assets.xcassets */,
+				A65BC6581C37549D00D18034 /* Main.storyboard */,
+				A65BC65D1C37549D00D18034 /* LaunchScreen.storyboard */,
+				A65BC6601C37549D00D18034 /* Info.plist */,
 				A65BC6501C37549D00D18034 /* main.m */,
 			);
 			name = "Supporting Files";
@@ -136,6 +144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A65BC6671C3767CB00D18034 /* resource.plist in Resources */,
 				A65BC65F1C37549D00D18034 /* LaunchScreen.storyboard in Resources */,
 				A65BC65C1C37549D00D18034 /* Assets.xcassets in Resources */,
 				A65BC65A1C37549D00D18034 /* Main.storyboard in Resources */,
@@ -151,6 +160,7 @@
 			files = (
 				A65BC6571C37549D00D18034 /* ViewController.m in Sources */,
 				A65BC6541C37549D00D18034 /* AppDelegate.m in Sources */,
+				A65BC66A1C37693800D18034 /* ResourceMode.m in Sources */,
 				A65BC6511C37549D00D18034 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
